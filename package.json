@@ -1,6 +1,6 @@
 {
   "name": "@ahkui/opentelemetry-node-metrics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An adoption of the node process metrics of prom-client",
   "author": "ahkui@outlook.com",
   "license": "Apache-2.0",
