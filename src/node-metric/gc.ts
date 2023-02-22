@@ -20,13 +20,16 @@ export const gc: (
   });
 
   const kinds: Record<number, MetricAttributes & { kind: string }> = {};
-  kinds[constants.NODE_PERFORMANCE_GC_MAJOR] = { ...labels, kind: 'major' };
-  kinds[constants.NODE_PERFORMANCE_GC_MINOR] = { ...labels, kind: 'minor' };
-  kinds[constants.NODE_PERFORMANCE_GC_INCREMENTAL] = {
-    ...labels,
-    kind: 'incremental',
-  };
-  kinds[constants.NODE_PERFORMANCE_GC_WEAKCB] = { ...labels, kind: 'weakcb' };
+
+  if (constants) {
+    kinds[constants.NODE_PERFORMANCE_GC_MAJOR] = { ...labels, kind: 'major' };
+    kinds[constants.NODE_PERFORMANCE_GC_MINOR] = { ...labels, kind: 'minor' };
+    kinds[constants.NODE_PERFORMANCE_GC_INCREMENTAL] = {
+      ...labels,
+      kind: 'incremental',
+    };
+    kinds[constants.NODE_PERFORMANCE_GC_WEAKCB] = { ...labels, kind: 'weakcb' };
+  }
 
   const obs = new PerformanceObserver((list) => {
     const entry = list.getEntries()[0];
